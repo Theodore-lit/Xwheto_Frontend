@@ -1,6 +1,6 @@
 {
   "expo": {
-   "name": "xweto",
+    "name": "xweto",
     "slug": "xweto",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,6 +8,9 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
+    },
+    "experiments": {
+      "tsconfigPaths": true
     },
     "android": {
       "adaptiveIcon": {
@@ -19,6 +22,9 @@
     },
     "web": {
       "bundler": "metro"
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }
