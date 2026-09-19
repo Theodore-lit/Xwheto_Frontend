@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* ==========================================
+     LIGHT MODE (Mode Clair par défaut) - Liquidmorphism
+     ========================================== */
+  :root {
+    /* Palette Officielle Charte Xwétô */
+    --color-brand-primary: 186 64% 75%;    /* #96E1E9 - Bleu Ciel */
+    --color-brand-accent: 347 40% 53%;     /* #AB5563 - Terracotta */
+    --color-brand-dark: 222 47% 11%;       /* #111827 - Ardoise / Black */
+
+    /* Couleurs Neutres UI (Light) */
+    --color-bg-app: 210 20% 98%;           /* #F8FAFC - Fond d'écran */
+    --color-bg-card: 0 0% 100%;            /* #FFFFFF - Cartes / Modales */
+    --color-text-main: 222 47% 11%;        /* #111827 - Texte principal */
+    --color-text-muted: 215 16% 47%;       /* #64748B - Sous-titres & placeholders */
+    --color-border: 214 32% 91%;           /* #E2E8F0 - Bordures de cartes & inputs */
+    /* Variables Liquidmorphism */
+    --liquid-border: rgba(255, 255, 255, 0.8);
+    --liquid-shadow-top: rgba(255, 255, 255, 0.9);
+    --liquid-shadow-bottom: rgba(150, 225, 233, 0.25);
+  }
+
+  /* ==========================================
+     DARK MODE (Mode Sombre)
+     ========================================== */
+  .dark {
+    /* Adaptation de la palette sous fond sombre */
+    --color-brand-primary: 186 64% 75%;    /* #96E1E9 conserve sa vibrance en Dark */
+    --color-brand-accent: 347 40% 53%;     /* #AB5563 */
+    --color-brand-dark: 222 47% 11%;       /* #111827 */
+
+    /* Couleurs Neutres UI (Dark) */
+    --color-bg-app: 222 47% 7%;            /* #0B0F17 - Fond très sombre */
+    --color-bg-card: 222 47% 12%;          /* #111827 - Cartes UI / Modales */
+    --color-text-main: 210 40% 98%;        /* #F8FAFC - Texte clair */
+    --color-text-muted: 215 20% 65%;       /* #94A3B8 - Textes secondaires */
+    --color-border: 217 19% 27%;           /* #334155 - Bordures sombres */
+
+    /* Variables Glassmorphism */
+    --glass-bg: rgba(17, 24, 39, 0.55);
+    --glass-border: rgba(150, 225, 233, 0.18);
+    --glass-glow: rgba(150, 225, 233, 0.15);
+  }
+
+  @layer utilities {
+  /* --- EFFET LIQUIDMORPHISM (LIGHT MODE) --- */
+  .liquid-card {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-width: 1.5px;
+    border-color: var(--liquid-border);
+    border-radius: 24px;
+    box-shadow: 
+      -6px -6px 14px var(--liquid-shadow-top),
+      8px 12px 20px var(--liquid-shadow-bottom);
+  }
+
+  /* --- EFFET GLASSMORPHISM (DARK MODE) --- */
+  .dark .glass-card {
+    background-color: var(--glass-bg);
+    border-width: 1px;
+    border-color: var(--glass-border);
+    border-radius: 24px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* --- HALO LUMINEUX & GLOW (Inspiré du visuel) --- */
+  .dark .glow-primary {
+    box-shadow: 0 0 25px var(--glass-glow);
+  }
+
+  .dark .glow-button {
+    box-shadow: 0 0 20px rgba(150, 225, 233, 0.4);
+  }
+}
+}
