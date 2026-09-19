@@ -34,11 +34,28 @@
 //   );
 // }
 
+import './global.css';
+import { useEffect } from 'react';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProviders } from '@/app/providers/AppProviders';
 import { RootNavigator } from '@/app/navigation/RootNavigator';
+import { fontMap } from '@/shared/lib/fonts';
+
+// Garde le splash visible tant qu'on n'a pas dit le contraire
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts(fontMap);
+
+  useEffect(() => {
+    // On cache le splash dès que c'est prêt, ou en cas d'erreur (pour ne pas rester bloqué)
+    if (fontsLoaded || fontError) SplashScreen.hideAsync();
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) return null;
+
   return (
     <SafeAreaProvider>
       <AppProviders>
