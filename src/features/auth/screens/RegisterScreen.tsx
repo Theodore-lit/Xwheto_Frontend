@@ -27,3 +27,5 @@ const styles = StyleSheet.create({
   subtitle: { marginBottom: 24, color: '#666' },
   gap: { marginTop: 16 },
 });
+
+
